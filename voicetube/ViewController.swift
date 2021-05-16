@@ -118,5 +118,11 @@ class ViewController: UIViewController {
                 }
             })
             .disposed(by: bag)
+        
+        timerStartButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.timerInputTextView.resignFirstResponder()
+            })
+            .disposed(by: bag)
     }
 }
