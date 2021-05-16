@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		20D8CDF32650DE4D00A892C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CDF22650DE4D00A892C0 /* AppDelegate.swift */; };
-		20D8CDF52650DE4D00A892C0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CDF42650DE4D00A892C0 /* SceneDelegate.swift */; };
 		20D8CDF72650DE4D00A892C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CDF62650DE4D00A892C0 /* ViewController.swift */; };
 		20D8CDFA2650DE4D00A892C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D8CDF82650DE4D00A892C0 /* Main.storyboard */; };
 		20D8CDFD2650DE4D00A892C0 /* voicetube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CDFB2650DE4D00A892C0 /* voicetube.xcdatamodeld */; };
@@ -38,7 +37,6 @@
 /* Begin PBXFileReference section */
 		20D8CDEF2650DE4D00A892C0 /* voicetube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = voicetube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D8CDF22650DE4D00A892C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20D8CDF42650DE4D00A892C0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		20D8CDF62650DE4D00A892C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		20D8CDF92650DE4D00A892C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20D8CDFC2650DE4D00A892C0 /* voicetube.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = voicetube.xcdatamodel; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				20D8CDF22650DE4D00A892C0 /* AppDelegate.swift */,
-				20D8CDF42650DE4D00A892C0 /* SceneDelegate.swift */,
 				20D8CDF62650DE4D00A892C0 /* ViewController.swift */,
 				20D8CDF82650DE4D00A892C0 /* Main.storyboard */,
 				20D8CDFE2650DE4E00A892C0 /* Assets.xcassets */,
@@ -264,7 +261,6 @@
 				20D8CDFD2650DE4D00A892C0 /* voicetube.xcdatamodeld in Sources */,
 				20D8CDF72650DE4D00A892C0 /* ViewController.swift in Sources */,
 				20D8CDF32650DE4D00A892C0 /* AppDelegate.swift in Sources */,
-				20D8CDF52650DE4D00A892C0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -425,7 +421,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
