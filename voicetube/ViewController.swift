@@ -98,5 +98,25 @@ class ViewController: UIViewController {
         viewModel.output.isTimerStartButtonEnabled
             .drive(timerStartButton.rx.isEnabled)
             .disposed(by: bag)
+        
+        timerStartButton.rx.tap
+            .bind(to: viewModel.input.didStartButtonTap)
+            .disposed(by: bag)
+        
+        viewModel.output.timerCount
+            .drive(timerLabel.rx.text)
+            .disposed(by: bag)
+        
+        viewModel.output.isTimerCounting
+            .drive(onNext: { [weak self] isTimerCounting in
+                if isTimerCounting {
+                    self?.timerStartButton.isEnabled = false
+                    self?.timerLabel.textColor = .black
+                } else {
+                    self?.timerStartButton.isEnabled = true
+                    self?.timerLabel.textColor = UIColor.lightGray.withAlphaComponent(0.3)
+                }
+            })
+            .disposed(by: bag)
     }
 }
