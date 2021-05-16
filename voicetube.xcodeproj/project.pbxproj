@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,7 @@
 		20D8CE022650DE4E00A892C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D8CE002650DE4E00A892C0 /* LaunchScreen.storyboard */; };
 		20D8CE0D2650DE4E00A892C0 /* voicetubeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CE0C2650DE4E00A892C0 /* voicetubeTests.swift */; };
 		20D8CE182650DE4E00A892C0 /* voicetubeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CE172650DE4E00A892C0 /* voicetubeUITests.swift */; };
+		20D8CE4F2650F60D00A892C0 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CE4E2650F60D00A892C0 /* UIImageExtension.swift */; };
 		A041DE0C43A9F169EBCB1A3E /* Pods_voicetube_voicetubeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA42FCB76184A7323029C7D9 /* Pods_voicetube_voicetubeUITests.framework */; };
 		C57BF62FD61EB521D4C743EB /* Pods_voicetube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777CB42FA04718E435150246 /* Pods_voicetube.framework */; };
 		FF777682B2DAD7BA5BF097AB /* Pods_voicetubeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED4774804DD51D2B4227379 /* Pods_voicetubeTests.framework */; };
@@ -53,6 +54,7 @@
 		20D8CE132650DE4E00A892C0 /* voicetubeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = voicetubeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D8CE172650DE4E00A892C0 /* voicetubeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = voicetubeUITests.swift; sourceTree = "<group>"; };
 		20D8CE192650DE4E00A892C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20D8CE4E2650F60D00A892C0 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		27CE5C100195E76719888CBC /* Pods-voicetube-voicetubeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voicetube-voicetubeUITests.debug.xcconfig"; path = "Target Support Files/Pods-voicetube-voicetubeUITests/Pods-voicetube-voicetubeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2ED4774804DD51D2B4227379 /* Pods_voicetubeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_voicetubeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		751A6FEC7816A912D4D8E848 /* Pods-voicetubeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voicetubeTests.debug.xcconfig"; path = "Target Support Files/Pods-voicetubeTests/Pods-voicetubeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -101,7 +103,6 @@
 				751A6FEC7816A912D4D8E848 /* Pods-voicetubeTests.debug.xcconfig */,
 				02ABD5061FDD30F5E14B8723 /* Pods-voicetubeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -130,6 +131,7 @@
 		20D8CDF12650DE4D00A892C0 /* voicetube */ = {
 			isa = PBXGroup;
 			children = (
+				20D8CE4D2650F5F000A892C0 /* Extension */,
 				20D8CDF22650DE4D00A892C0 /* AppDelegate.swift */,
 				20D8CDF62650DE4D00A892C0 /* ViewController.swift */,
 				20D8CDF82650DE4D00A892C0 /* Main.storyboard */,
@@ -157,6 +159,14 @@
 				20D8CE192650DE4E00A892C0 /* Info.plist */,
 			);
 			path = voicetubeUITests;
+			sourceTree = "<group>";
+		};
+		20D8CE4D2650F5F000A892C0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				20D8CE4E2650F60D00A892C0 /* UIImageExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		65E68EFF5BC3DAA81AD4A6CC /* Frameworks */ = {
@@ -410,6 +420,7 @@
 				20D8CDFD2650DE4D00A892C0 /* voicetube.xcdatamodeld in Sources */,
 				20D8CDF72650DE4D00A892C0 /* ViewController.swift in Sources */,
 				20D8CDF32650DE4D00A892C0 /* AppDelegate.swift in Sources */,
+				20D8CE4F2650F60D00A892C0 /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
