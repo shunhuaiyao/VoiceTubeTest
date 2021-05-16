@@ -5,8 +5,10 @@
 //  Created by Yao Shun-Huai on 2021/5/16.
 //
 
-import UIKit
+import RxCocoa
+import RxSwift
 import SnapKit
+import UIKit
 
 class ViewController: UIViewController {
     
@@ -45,12 +47,25 @@ class ViewController: UIViewController {
         lb.text = "0 s"
         return lb
     }()
+    
+    private let viewModel: ViewModel
+    private let bag = DisposeBag()
+
+    init() {
+        viewModel = ViewModel()
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         setupSubviews()
+        setupBindings()
     }
 
     private func setupSubviews() {
@@ -74,5 +89,14 @@ class ViewController: UIViewController {
             $0.left.right.equalToSuperview().inset(20)
         }
     }
+    
+    private func setupBindings() {
+        timerInputTextView.rx.text.orEmpty
+            .bind(to: viewModel.input.timerInputText)
+            .disposed(by: bag)
+        
+        viewModel.output.isTimerStartButtonEnabled
+            .drive(timerStartButton.rx.isEnabled)
+            .disposed(by: bag)
+    }
 }
-
