@@ -1,0 +1,6 @@
+framework module Pods_voicetubeTests {
+  umbrella header "Pods-voicetubeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
