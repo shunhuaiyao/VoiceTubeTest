@@ -8,7 +8,7 @@
 import Kingfisher
 import UIKit
 
-class VideoCollectionViewCell: UICollectionViewCell {
+class VideoTableViewCell: UITableViewCell {
 
     private let videoImageView: UIImageView = {
         let iv = UIImageView()
@@ -35,8 +35,8 @@ class VideoCollectionViewCell: UICollectionViewCell {
         return v
     }()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
     }
 

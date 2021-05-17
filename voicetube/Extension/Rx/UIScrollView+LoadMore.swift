@@ -10,22 +10,22 @@ import RxSwift
 import UIKit
 
 extension Reactive where Base: UIScrollView {
-    var loadMoreHorizontally: ControlEvent<Void> {
+    var loadMoreVertically: ControlEvent<Void> {
         let willEndDragginAndLoadMore = base.rx.willEndDragging
             .filter {
-                $0.velocity.x > 0
+                $0.velocity.y > 0
             }
             .map { _ in () }
             .filter {
-                let screenBottomX = self.base.contentOffset.x + self.base.bounds.width
-                let loadMoreX = self.base.contentSize.width - 3 * self.base.bounds.width
-                return loadMoreX < screenBottomX
+                let screenBottomY = self.base.contentOffset.y + self.base.bounds.height
+                let loadMoreY = self.base.contentSize.height - self.base.bounds.height
+                return loadMoreY < screenBottomY
             }
         let didScrollToBottomAndLoadMore = base.rx.didScroll
             .map { _ -> CGFloat in
-                let screenBottomX = self.base.contentOffset.x + self.base.bounds.width - self.base.contentInset.right
-                let loadMoreX = self.base.contentSize.width
-                return screenBottomX - loadMoreX
+                let screenBottomY = self.base.contentOffset.y + self.base.bounds.height - self.base.contentInset.bottom
+                let loadMoreY = self.base.contentSize.height
+                return screenBottomY - loadMoreY
             }
             .pairwise()
             .filter { $0 <= 0 && $1 > 0 }
