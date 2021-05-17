@@ -100,9 +100,12 @@ class ViewController: UIViewController {
             .disposed(by: bag)
         
         timerStartButton.rx.tap
+            .do(onNext: { [weak self] in
+                self?.timerInputTextView.resignFirstResponder()
+            })
             .bind(to: viewModel.input.didStartButtonTap)
             .disposed(by: bag)
-        
+
         viewModel.output.timerCount
             .drive(timerLabel.rx.text)
             .disposed(by: bag)
@@ -116,12 +119,6 @@ class ViewController: UIViewController {
                     self?.timerStartButton.isEnabled = true
                     self?.timerLabel.textColor = UIColor.lightGray.withAlphaComponent(0.3)
                 }
-            })
-            .disposed(by: bag)
-        
-        timerStartButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.timerInputTextView.resignFirstResponder()
             })
             .disposed(by: bag)
     }
