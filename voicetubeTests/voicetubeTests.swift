@@ -9,13 +9,35 @@ import XCTest
 @testable import voicetube
 
 class voicetubeTests: XCTestCase {
+    
+    var viewModel: ViewModel!
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        viewModel = ViewModel()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    func testIsCounterFinished() {
+        let expected = 0
+        let count = 10
+        viewModel.startTimer(from: count)
+        sleep(UInt32(count))
+        XCTAssertTrue(viewModel.timerCountRelay.value == expected, "Timer is finished.")
+    }
+    
+    func testCounterState() {
+        let expectedCounting: ViewModel.TimerState = .resumed
+        let expectedFinished: ViewModel.TimerState = .suspended
+        let count = 10
+        viewModel.startTimer(from: count)
+        sleep(UInt32(count/2))
+        XCTAssertTrue(viewModel.timerStateRelay.value == expectedCounting, "Timer is counting.")
+        sleep(UInt32(count/2 + 2))
+        XCTAssertTrue(viewModel.timerStateRelay.value == expectedFinished, "Timer is finished.")
     }
 
     func testExample() throws {

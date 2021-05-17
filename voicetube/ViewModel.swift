@@ -20,7 +20,7 @@ class ViewModel: ViewModelType {
         let isTimerCounting: Driver<Bool>
     }
     
-    private enum TimerState {
+    internal enum TimerState {
         case suspended
         case resumed
     }
@@ -34,8 +34,8 @@ class ViewModel: ViewModelType {
     private let timerInputTextRelay = BehaviorRelay<String>(value: "")
     private let isTimerStartButtonEnabledRelay = BehaviorRelay<Bool>(value: false)
     private let didStartButtonTapRelay = PublishRelay<Void>()
-    private let timerCountRelay = BehaviorRelay<Int>(value: .zero)
-    private let timerStateRelay = BehaviorRelay<TimerState>(value: .suspended)
+    private(set) var timerStateRelay = BehaviorRelay<TimerState>(value: .suspended)
+    private(set) var timerCountRelay = BehaviorRelay<Int>(value: .zero)
     private let bag = DisposeBag()
     
     private lazy var timer: DispatchSourceTimer = {
@@ -68,13 +68,13 @@ class ViewModel: ViewModelType {
             .filter { $0 != nil }
             .map { $0! }
             .subscribe(onNext: { [weak self] seconds in
-                self?.timerCountRelay.accept(seconds)
-                self?.startTimer()
+                self?.startTimer(from: seconds)
             })
             .disposed(by: bag)
     }
     
-    private func startTimer() {
+    func startTimer(from seconds: Int) {
+        timerCountRelay.accept(seconds)
         timer.setEventHandler { [weak self] in
             guard let timerCount = self?.timerCountRelay.value, timerCount > .zero else {
                 self?.suspendTimer()
