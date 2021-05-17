@@ -48,6 +48,21 @@ class ViewController: UIViewController {
         return lb
     }()
     
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.scrollDirection = .horizontal
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.register(VideoCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: VideoCollectionViewCell.self))
+        cv.contentInset = UIEdgeInsets(top: 10, left: 16, bottom: 120, right: 16)
+        cv.backgroundColor = .clear
+        cv.showsHorizontalScrollIndicator = false
+        cv.alwaysBounceHorizontal = true
+        cv.delegate = self
+        return cv
+    }()
+    
     private let viewModel: ViewModel
     private let bag = DisposeBag()
 
@@ -72,6 +87,7 @@ class ViewController: UIViewController {
         view.addSubview(timerInputTextView)
         view.addSubview(timerStartButton)
         view.addSubview(timerLabel)
+        view.addSubview(collectionView)
         
         timerInputTextView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(100)
@@ -87,6 +103,11 @@ class ViewController: UIViewController {
             $0.centerX.equalToSuperview()
             $0.top.equalTo(timerInputTextView.snp.bottom).offset(30)
             $0.left.right.equalToSuperview().inset(20)
+        }
+        collectionView.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.centerY.equalToSuperview().offset(130)
+            $0.height.equalTo(280)
         }
     }
     
@@ -121,5 +142,22 @@ class ViewController: UIViewController {
                 }
             })
             .disposed(by: bag)
+        
+        viewModel.output.videos
+            .drive(collectionView.rx.items) { cv, item, video in
+                let cell: VideoCollectionViewCell = cv.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: VideoCollectionViewCell.self),
+                    for: IndexPath(item: item, section: 0)
+                ) as! VideoCollectionViewCell
+                cell.configure(with: video)
+                return cell
+            }
+            .disposed(by: bag)
+    }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 150, height: 150)
     }
 }

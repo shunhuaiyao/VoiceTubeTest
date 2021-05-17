@@ -26,6 +26,7 @@
 		20D8CEE7265220CA00A892C0 /* APIBaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CEE6265220CA00A892C0 /* APIBaseService.swift */; };
 		20D8CEEC2652212C00A892C0 /* AppQuizAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CEEB2652212C00A892C0 /* AppQuizAPI.swift */; };
 		20D8CEF4265221CF00A892C0 /* AppQuizService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CEF3265221CF00A892C0 /* AppQuizService.swift */; };
+		20D8CF2B2652A32000A892C0 /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CF2A2652A32000A892C0 /* VideoCollectionViewCell.swift */; };
 		A041DE0C43A9F169EBCB1A3E /* Pods_voicetube_voicetubeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA42FCB76184A7323029C7D9 /* Pods_voicetube_voicetubeUITests.framework */; };
 		C57BF62FD61EB521D4C743EB /* Pods_voicetube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777CB42FA04718E435150246 /* Pods_voicetube.framework */; };
 		FF777682B2DAD7BA5BF097AB /* Pods_voicetubeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED4774804DD51D2B4227379 /* Pods_voicetubeTests.framework */; };
@@ -75,6 +76,7 @@
 		20D8CEE6265220CA00A892C0 /* APIBaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBaseService.swift; sourceTree = "<group>"; };
 		20D8CEEB2652212C00A892C0 /* AppQuizAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppQuizAPI.swift; sourceTree = "<group>"; };
 		20D8CEF3265221CF00A892C0 /* AppQuizService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppQuizService.swift; sourceTree = "<group>"; };
+		20D8CF2A2652A32000A892C0 /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		27CE5C100195E76719888CBC /* Pods-voicetube-voicetubeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voicetube-voicetubeUITests.debug.xcconfig"; path = "Target Support Files/Pods-voicetube-voicetubeUITests/Pods-voicetube-voicetubeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2ED4774804DD51D2B4227379 /* Pods_voicetubeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_voicetubeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		751A6FEC7816A912D4D8E848 /* Pods-voicetubeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voicetubeTests.debug.xcconfig"; path = "Target Support Files/Pods-voicetubeTests/Pods-voicetubeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				20D8CE002650DE4E00A892C0 /* LaunchScreen.storyboard */,
 				20D8CE032650DE4E00A892C0 /* Info.plist */,
 				20D8CDFB2650DE4D00A892C0 /* voicetube.xcdatamodeld */,
+				20D8CF2A2652A32000A892C0 /* VideoCollectionViewCell.swift */,
 			);
 			path = voicetube;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				20D8CDFD2650DE4D00A892C0 /* voicetube.xcdatamodeld in Sources */,
 				20D8CEE22652209F00A892C0 /* APIServices.swift in Sources */,
 				20D8CDF72650DE4D00A892C0 /* ViewController.swift in Sources */,
+				20D8CF2B2652A32000A892C0 /* VideoCollectionViewCell.swift in Sources */,
 				20D8CDF32650DE4D00A892C0 /* AppDelegate.swift in Sources */,
 				20D8CEEC2652212C00A892C0 /* AppQuizAPI.swift in Sources */,
 				20D8CEDA2652201000A892C0 /* VoiceTubeTargetType.swift in Sources */,
