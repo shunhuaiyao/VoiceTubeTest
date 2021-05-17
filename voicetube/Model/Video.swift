@@ -21,4 +21,9 @@ struct Video: Decodable {
         title = try container.decodeIfPresent(String.self, forKey: .title) ?? ""
         imageURL = try container.decodeIfPresent(URL.self, forKey: .imageURL)
     }
+    
+    init(title: String, imageURL: URL?) {
+        self.title = title
+        self.imageURL = imageURL
+    }
 }

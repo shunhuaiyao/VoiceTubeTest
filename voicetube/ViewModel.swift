@@ -7,6 +7,7 @@
 
 import RxCocoa
 import RxSwift
+import CoreData
 
 class ViewModel: ViewModelType {
     struct Input {
@@ -18,6 +19,7 @@ class ViewModel: ViewModelType {
         let isTimerStartButtonEnabled: Driver<Bool>
         let timerCount: Driver<String>
         let isTimerCounting: Driver<Bool>
+        let videos: Driver<[Video]>
     }
     
     internal enum TimerState {
@@ -30,12 +32,14 @@ class ViewModel: ViewModelType {
         didStartButtonTap: didStartButtonTapRelay.asBinder()
     )
     let output: Output
+    private let appQuizService: AppQuizService
 
     private let timerInputTextRelay = BehaviorRelay<String>(value: "")
     private let isTimerStartButtonEnabledRelay = BehaviorRelay<Bool>(value: false)
     private let didStartButtonTapRelay = PublishRelay<Void>()
     private(set) var timerStateRelay = BehaviorRelay<TimerState>(value: .suspended)
     private(set) var timerCountRelay = BehaviorRelay<Int>(value: .zero)
+    private let videosRelay = BehaviorRelay<[Video]>(value: [])
     private let bag = DisposeBag()
     
     private lazy var timer: DispatchSourceTimer = {
@@ -44,13 +48,18 @@ class ViewModel: ViewModelType {
         return timer
     }()
 
-    init() {
+    init(
+        appQuizService: AppQuizService = APIServices.appQuiz
+    ) {
         output = Output(
             isTimerStartButtonEnabled: isTimerStartButtonEnabledRelay.asDriver(),
             timerCount: timerCountRelay.asDriver().map { String($0) + " s" },
-            isTimerCounting: timerCountRelay.asDriver().map { $0 > .zero }
+            isTimerCounting: timerCountRelay.asDriver().map { $0 > .zero },
+            videos: videosRelay.asDriver()
         )
-        
+        self.appQuizService = appQuizService
+
+        getVideosCache()
         setupNotifications()
 
         timerInputTextRelay
@@ -112,6 +121,59 @@ class ViewModel: ViewModelType {
             name: UIApplication.willEnterForegroundNotification,
             object: nil
         )
+    }
+    
+    private func fetchVideos() {
+        appQuizService.videos()
+            .map { $0.videos }
+            .subscribe(onSuccess: { [weak self] videos in
+                self?.videosRelay.accept(videos)
+                self?.saveVideosToCache(videos)
+            })
+            .disposed(by: bag)
+    }
+    
+    private func getVideosCache() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSManagedObject>(entityName: "ManagedVideo")
+        do {
+            let managedVideos = try context.fetch(request)
+            if managedVideos.isEmpty {
+                fetchVideos()
+            } else {
+                var videos: [Video] = []
+                managedVideos.forEach {
+                    if let title = $0.value(forKey: "title") as? String,
+                       let imageURL = $0.value(forKey: "imageURL") as? String {
+                        videos.append(
+                            Video(title: title, imageURL: URL(string: imageURL))
+                        )
+                    }
+                }
+                videosRelay.accept(videos)
+            }
+        } catch let error as NSError {
+            print("Could not fetch with \(error).")
+        }
+    }
+    
+    private func saveVideosToCache(_ videos: [Video]) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+              let entity = NSEntityDescription.entity(forEntityName: "ManagedVideo", in: appDelegate.persistentContainer.viewContext) else { return }
+        videos.forEach {
+            let video = NSManagedObject(entity: entity, insertInto: appDelegate.persistentContainer.viewContext)
+            video.setValue($0.title, forKey: "title")
+            if let imageURL = $0.imageURL?.absoluteString {
+                video.setValue(imageURL, forKey: "imageURL")
+            }
+        }
+        do {
+            try appDelegate.persistentContainer.viewContext.save()
+            
+        } catch let error as NSError {
+            print("Could not save with \(error).")
+        }
     }
     
     @objc func appMovedToBackground() {
