@@ -27,6 +27,8 @@
 		20D8CEEC2652212C00A892C0 /* AppQuizAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CEEB2652212C00A892C0 /* AppQuizAPI.swift */; };
 		20D8CEF4265221CF00A892C0 /* AppQuizService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CEF3265221CF00A892C0 /* AppQuizService.swift */; };
 		20D8CF2B2652A32000A892C0 /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CF2A2652A32000A892C0 /* VideoCollectionViewCell.swift */; };
+		20D8CF302652A78400A892C0 /* UIScrollView+LoadMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CF2F2652A78400A892C0 /* UIScrollView+LoadMore.swift */; };
+		20D8CF352652A7ED00A892C0 /* ObservableType+Nwise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8CF342652A7EC00A892C0 /* ObservableType+Nwise.swift */; };
 		A041DE0C43A9F169EBCB1A3E /* Pods_voicetube_voicetubeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA42FCB76184A7323029C7D9 /* Pods_voicetube_voicetubeUITests.framework */; };
 		C57BF62FD61EB521D4C743EB /* Pods_voicetube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 777CB42FA04718E435150246 /* Pods_voicetube.framework */; };
 		FF777682B2DAD7BA5BF097AB /* Pods_voicetubeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED4774804DD51D2B4227379 /* Pods_voicetubeTests.framework */; };
@@ -77,6 +79,8 @@
 		20D8CEEB2652212C00A892C0 /* AppQuizAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppQuizAPI.swift; sourceTree = "<group>"; };
 		20D8CEF3265221CF00A892C0 /* AppQuizService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppQuizService.swift; sourceTree = "<group>"; };
 		20D8CF2A2652A32000A892C0 /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
+		20D8CF2F2652A78400A892C0 /* UIScrollView+LoadMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+LoadMore.swift"; sourceTree = "<group>"; };
+		20D8CF342652A7EC00A892C0 /* ObservableType+Nwise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Nwise.swift"; sourceTree = "<group>"; };
 		27CE5C100195E76719888CBC /* Pods-voicetube-voicetubeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voicetube-voicetubeUITests.debug.xcconfig"; path = "Target Support Files/Pods-voicetube-voicetubeUITests/Pods-voicetube-voicetubeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2ED4774804DD51D2B4227379 /* Pods_voicetubeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_voicetubeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		751A6FEC7816A912D4D8E848 /* Pods-voicetubeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voicetubeTests.debug.xcconfig"; path = "Target Support Files/Pods-voicetubeTests/Pods-voicetubeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 			isa = PBXGroup;
 			children = (
 				20D8CE652650FB1000A892C0 /* Relay+AsBinder.swift */,
+				20D8CF2F2652A78400A892C0 /* UIScrollView+LoadMore.swift */,
+				20D8CF342652A7EC00A892C0 /* ObservableType+Nwise.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 				20D8CDFD2650DE4D00A892C0 /* voicetube.xcdatamodeld in Sources */,
 				20D8CEE22652209F00A892C0 /* APIServices.swift in Sources */,
 				20D8CDF72650DE4D00A892C0 /* ViewController.swift in Sources */,
+				20D8CF352652A7ED00A892C0 /* ObservableType+Nwise.swift in Sources */,
 				20D8CF2B2652A32000A892C0 /* VideoCollectionViewCell.swift in Sources */,
 				20D8CDF32650DE4D00A892C0 /* AppDelegate.swift in Sources */,
 				20D8CEEC2652212C00A892C0 /* AppQuizAPI.swift in Sources */,
@@ -510,6 +517,7 @@
 				20D8CE582650FA7000A892C0 /* ViewModelType.swift in Sources */,
 				20D8CECD26521E8B00A892C0 /* Video.swift in Sources */,
 				20D8CED226521F1800A892C0 /* Videos.swift in Sources */,
+				20D8CF302652A78400A892C0 /* UIScrollView+LoadMore.swift in Sources */,
 				20D8CEE7265220CA00A892C0 /* APIBaseService.swift in Sources */,
 				20D8CE602650FA8B00A892C0 /* ViewModel.swift in Sources */,
 				20D8CE4F2650F60D00A892C0 /* UIImageExtension.swift in Sources */,

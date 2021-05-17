@@ -13,6 +13,7 @@ class ViewModel: ViewModelType {
     struct Input {
         let timerInputText: Binder<String>
         let didStartButtonTap: Binder<Void>
+        let loadMore: Binder<Void>
     }
 
     struct Output {
@@ -29,7 +30,8 @@ class ViewModel: ViewModelType {
     
     private(set) lazy var input = Input(
         timerInputText: timerInputTextRelay.asBinder(),
-        didStartButtonTap: didStartButtonTapRelay.asBinder()
+        didStartButtonTap: didStartButtonTapRelay.asBinder(),
+        loadMore: loadMoreRelay.asBinder()
     )
     let output: Output
     private let appQuizService: AppQuizService
@@ -40,6 +42,7 @@ class ViewModel: ViewModelType {
     private(set) var timerStateRelay = BehaviorRelay<TimerState>(value: .suspended)
     private(set) var timerCountRelay = BehaviorRelay<Int>(value: .zero)
     private let videosRelay = BehaviorRelay<[Video]>(value: [])
+    private let loadMoreRelay = PublishRelay<Void>()
     private let bag = DisposeBag()
     
     private lazy var timer: DispatchSourceTimer = {
@@ -79,6 +82,11 @@ class ViewModel: ViewModelType {
             .subscribe(onNext: { [weak self] seconds in
                 self?.startTimer(from: seconds)
             })
+            .disposed(by: bag)
+        
+        loadMoreRelay
+            .withLatestFrom(videosRelay) { $1 + $1 }
+            .bind(to: videosRelay)
             .disposed(by: bag)
     }
     

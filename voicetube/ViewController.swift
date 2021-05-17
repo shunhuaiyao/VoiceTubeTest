@@ -153,6 +153,10 @@ class ViewController: UIViewController {
                 return cell
             }
             .disposed(by: bag)
+        
+        collectionView.rx.loadMoreHorizontally
+            .bind(to: viewModel.input.loadMore)
+            .disposed(by: bag)
     }
 }
 
