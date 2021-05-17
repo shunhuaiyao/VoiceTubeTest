@@ -155,5 +155,11 @@ class ViewController: UIViewController {
         tableView.rx.loadMoreVertically
             .bind(to: viewModel.input.loadMore)
             .disposed(by: bag)
+        
+        tableView.rx.willBeginDragging
+            .subscribe(onNext: { [weak self] in
+                self?.timerInputTextView.resignFirstResponder()
+            })
+            .disposed(by: bag)
     }
 }
