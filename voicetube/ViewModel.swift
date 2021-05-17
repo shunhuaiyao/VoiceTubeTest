@@ -41,7 +41,8 @@ class ViewModel: ViewModelType {
     private let didStartButtonTapRelay = PublishRelay<Void>()
     private(set) var timerStateRelay = BehaviorRelay<TimerState>(value: .suspended)
     private(set) var timerCountRelay = BehaviorRelay<Int>(value: .zero)
-    private let videosRelay = BehaviorRelay<[Video]>(value: [])
+    private(set) var videosRelay = BehaviorRelay<[Video]>(value: [])
+    private(set) var isFetchedRelay = BehaviorRelay<Bool>(value: true)
     private let loadMoreRelay = PublishRelay<Void>()
     private let bag = DisposeBag()
     
@@ -62,7 +63,6 @@ class ViewModel: ViewModelType {
         )
         self.appQuizService = appQuizService
 
-        getVideosCache()
         setupNotifications()
 
         timerInputTextRelay
@@ -141,7 +141,7 @@ class ViewModel: ViewModelType {
             .disposed(by: bag)
     }
     
-    private func getVideosCache() {
+    func getVideosCache() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSManagedObject>(entityName: "ManagedVideo")
@@ -160,6 +160,7 @@ class ViewModel: ViewModelType {
                     }
                 }
                 videosRelay.accept(videos)
+                isFetchedRelay.accept(false)
             }
         } catch let error as NSError {
             print("Could not fetch with \(error).")

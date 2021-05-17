@@ -79,6 +79,8 @@ class ViewController: UIViewController {
         
         setupSubviews()
         setupBindings()
+        
+        viewModel.getVideosCache()
     }
 
     private func setupSubviews() {
